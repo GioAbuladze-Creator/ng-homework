@@ -9,6 +9,21 @@ import { HwFormsComponent } from './homework1/app-forms/app-forms.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ExchangerComponent } from './homework2/exchanger/exchanger.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+
+const appRoutes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+    // children: [
+    //   {
+
+    //   }
+    // ]
+  },
+  {path:'',redirectTo:'/login',pathMatch: 'full'},
+]
 
 @NgModule({
   declarations: [
@@ -16,13 +31,15 @@ import { HttpClientModule } from '@angular/common/http';
     FormComponent,
     UsersComponent,
     HwFormsComponent,
-    ExchangerComponent
+    ExchangerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
