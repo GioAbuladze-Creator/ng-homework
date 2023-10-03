@@ -1,0 +1,35 @@
+<div class="table-responsive">
+    <table class="table  overflow-scroll" *ngIf="users.length">
+        <thead>
+            <tr class="text-center">
+                <th colspan="7" class="text-info">Users</th>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Nickname</th>
+                <th>Phone Number</th>
+                <th>Website</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.nickname}}</td>
+                <td>{{user.phone}}</td>
+                <td>{{user.website}}</td>
+                <td>
+                    <button class="btn btn-info" (click)="fillForm(user)">Edit</button>
+                    <button class="btn btn-danger" (click)="user.deleteMode=true">Delete</button>
+                </td>
+                <td *ngIf='user.deleteMode'>
+                    Are You Sure?
+                    <button class="btn btn-success" (click)='deleteUser(user)'>Yes</button>
+                    <button class="btn btn-danger" (click)="deleteMode(user)">No</button>
+                </td>
+            </tr>        
+        </tbody>
+    </table>
+</div>

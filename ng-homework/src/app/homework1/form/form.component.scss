@@ -1,0 +1,51 @@
+.container-fluid {
+    margin-top: 50px;
+    max-width: 600px;
+    
+    h2 {
+        text-align: center;
+        color:deepskyblue;
+        margin-bottom: 40px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        >div:first-child{
+            display: flex;
+            justify-content: flex-end;
+        }
+        .text-danger{
+            margin-left: 175px;
+            font-size: 12px;
+        }
+        input {
+            width: 70%;
+            margin-left: 10px;
+        }
+
+        label {
+            margin-top: 6px;
+
+            &::before {
+                content: '*';
+                color: red;
+                margin-right: 2px;
+            }
+        }
+    }
+    .form-check {
+        input{
+            margin-right:10px;
+            margin-left:148px;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+    .btn {
+        margin-top:20px;
+        margin-left: 170px;
+        
+    }
+
+}

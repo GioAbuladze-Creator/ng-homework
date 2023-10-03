@@ -1,0 +1,79 @@
+<div class="container-fluid" [formGroup]="form">
+    <h2>{{status.header}} Form</h2>
+    <form action="">
+        <div class="form-group">
+            <div>
+                <label>E-mail:</label>
+                <input type="text" class="form-control" formControlName="email"
+                    [class.is-invalid]="email?.invalid&&email?.touched">
+            </div>
+
+            <div *ngIf="email?.invalid && email?.touched" class="text-danger">
+                <div *ngIf="email?.errors?.['required']">Email is required</div>
+                <div *ngIf="email?.errors?.['pattern']">Invalid Email Format</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Password:</label>
+                <input type="password" class="form-control" formControlName="password"
+                    [class.is-invalid]="password?.invalid&&password?.touched">
+            </div>
+            <div *ngIf="password?.invalid && (password?.touched || password?.dirty)" class="text-danger">
+                <div *ngIf="password?.errors?.['required']">Password is required</div>
+                <div *ngIf="password?.errors?.['pattern']">min 7 symbols and only characters or numbers</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Confirm Password:</label>
+                <input type="password" class="form-control" formControlName="confirmPassword"
+                    [class.is-invalid]="(confirmPassword?.invalid&&confirmPassword?.touched) ||form.errors?.['misMatch']">
+            </div>
+            <div *ngIf="(confirmPassword?.invalid && confirmPassword?.touched)||form.errors?.['misMatch']"
+                class="text-danger">
+                <div *ngIf="confirmPassword?.errors?.['required']">Confirm Password is required</div>
+                <div *ngIf="form.errors?.['misMatch']">Passwords should be the same</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Nickname:</label>
+                <input type="text" class="form-control" formControlName="nickname"
+                    [class.is-invalid]="nickname?.invalid&&nickname?.touched">
+            </div>
+            <div *ngIf="nickname?.invalid &&(nickname?.touched || nickname?.dirty)" class="text-danger">
+                <div *ngIf="nickname?.errors?.['required']">Nickname is required</div>
+                <div *ngIf="nickname?.errors?.['pattern']">only characters, numbers or _</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Phone Number:</label>
+                <input type="text" class="form-control" formControlName="phone"
+                    [class.is-invalid]="phone?.invalid&&phone?.touched">
+            </div>
+            <div *ngIf="phone?.invalid && phone?.touched" class="text-danger">
+                <div *ngIf="phone?.errors?.['required']">Phone number is required</div>
+                <div *ngIf="phone?.errors?.['pattern']">'+995 'and your number (9 digits without space) </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Website:</label>
+                <input type="text" class="form-control" placeholder="website" formControlName="website"
+                    [class.is-invalid]="website?.invalid&&website?.touched">
+            </div>
+            <div *ngIf="website?.invalid && website?.touched" class="text-danger">
+                <div *ngIf="website?.errors?.['required']">website is required</div>
+                <div *ngIf="website?.errors?.['pattern']">Invalid website format </div>
+            </div>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" formControlName="agreementCheckbox" class="form-check-input" />
+            <label class="text-center">I have read the <a href="#" class="form-check-label">agreement</a></label>
+        </div>
+
+        <button class="btn btn-primary" (click)="onSubmit()" [disabled]="isDisabled()">{{status.button}}</button>
+    </form>
+</div>
