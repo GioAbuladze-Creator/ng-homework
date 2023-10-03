@@ -1,0 +1,26 @@
+<form class="d-flex flex-wrap justify-content-between" [formGroup]="form">
+    <div class="headers">    
+        <h4 *ngIf="currency1.length==0||currency2.length==0">Exchange</h4>
+        <h4 *ngIf="currency1.length>0&&currency2.length>0">{{value1}} {{currency1}} to {{currency2}}</h4>
+        <h5 *ngIf="exchangeRate!=0">Exchange Rate: {{exchangeRate}}</h5>
+    </div>
+    <div class="form-group" formGroupName="left">
+        <select class="form-control" name="currency1" (change)="getExchangeRate()" formControlName="currency1">
+            <option value="" selected disabled>Select Currency 1</option>
+            <option *ngFor="let currency of currencies" [value]="currency.code">
+                <span><strong>{{currency.code}} </strong></span><span>{{currency.name}}</span>
+            </option>
+        </select>
+        <input type="number" class="form-control" name="value1" (input)="value2=value1*exchangeRate" formControlName="value1">
+    </div>
+    <button class="btn" (click)="switchCurrencies()"><i class="fa-solid fa-arrow-right-arrow-left"></i></button>
+    <div class="form-group" formGroupName="right">
+        <select class="form-control" name="currency2" (change)="getExchangeRate()" formControlName="currency2">
+            <option value="" selected disabled>Select Currency 2</option>
+            <option *ngFor="let currency of currencies" [value]="currency.code">
+                <span><strong>{{currency.code}} </strong></span><span>{{currency.name}}</span>
+            </option>
+        </select>
+        <input type="number" class="form-control" name="value2" (input)="value1=value2/exchangeRate" formControlName="value2">
+    </div>
+</form>
