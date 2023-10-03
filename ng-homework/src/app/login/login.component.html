@@ -17,7 +17,7 @@
                 <input type="password" placeholder="Password" class="form-control" formControlName="password"
                     [class.is-invalid]="password?.invalid&&password?.touched">
             </div>
-            <div *ngIf="password?.invalid && (password?.touched || password?.dirty)" class="text-danger">
+            <div *ngIf="password?.invalid && (password?.touched)" class="text-danger">
                 <div *ngIf="password?.errors?.['required']">Password is required</div>
                 <div *ngIf="password?.errors?.['pattern']">min 7 symbols and only characters or numbers</div>
             </div>
@@ -45,3 +45,4 @@
         </div>
     </div>
 </div>
+<app-users></app-users>
