@@ -14,7 +14,7 @@ declare var window:any;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  user!:User;
+  // user!:User;
   invalidLogin:boolean=false;
   constructor(
     private fb:FormBuilder,
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit{
       this.invalidLogin=false;
       this.authService.logIn();
       found.authorized=true;
-      this.user=found;
+      this.authService.loggedUser=found;
       console.log(found)
       this.form.reset();
       this.router.navigate(['/users'])
