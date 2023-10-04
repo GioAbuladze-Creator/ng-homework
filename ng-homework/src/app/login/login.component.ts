@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../homework1/shared/users.service';
 import { User } from '../homework1/shared/user.interface';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 declare var window:any;
 
@@ -13,13 +14,13 @@ declare var window:any;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  logged:boolean=false;
   user!:User;
   invalidLogin:boolean=false;
   constructor(
     private fb:FormBuilder,
     private usersService:UsersService,
-    private router:Router
+    private router:Router,
+    private authService:AuthService
   ){}
 
   form=this.fb.group({
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit{
     let found=this.usersService.userList.find((user)=>{return user.email==this.email?.value&&user.password==this.password?.value})
     if(found){
       this.invalidLogin=false;
-      this.logged=true;
+      this.authService.logIn();
       found.authorized=true;
       this.user=found;
       console.log(found)

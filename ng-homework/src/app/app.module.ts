@@ -11,14 +11,20 @@ import { ExchangerComponent } from './homework2/exchanger/exchanger.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { isUserLoggedInGuard } from './services/isLoggedIn.guard';
+import { isUserLoggedOutGuard } from './services/isLoggedOut.guard';
+import { ErrorComponent } from './error.component';
 
 const appRoutes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    canActivate:[isUserLoggedOutGuard],
+    component: LoginComponent
   },
+  {path:'users',component:HwFormsComponent,canActivate:[isUserLoggedInGuard]},
+  {path:'currency',component:ExchangerComponent,canActivate:[isUserLoggedInGuard]},
   {path:'',redirectTo:'/login',pathMatch: 'full'},
-  {path:'users',component:HwFormsComponent},
+  {path:'**', component:ErrorComponent}
 ]
 
 @NgModule({

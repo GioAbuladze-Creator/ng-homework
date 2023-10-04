@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 import { User } from '../shared/user.interface';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -9,7 +11,10 @@ import { User } from '../shared/user.interface';
 })
 export class UsersComponent implements OnInit{
   users: Array<User> = [];
-  constructor( private usersService:UsersService) { }
+  constructor( 
+    private usersService:UsersService, 
+    private auth:AuthService,
+    private router:Router) { }
 
   public fillForm(user: User): void {
     this.usersService.fillFormEvent.emit(user);
@@ -21,6 +26,8 @@ export class UsersComponent implements OnInit{
   }
   public deleteUser(user: User): void {
     this.usersService.deleteUser(user);
+    this.router.navigate(['/login']);
+    this.auth.logOut();
   }
   ngOnInit(): void {
     this.users=this.usersService.userList;
