@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IExchangeRateResponse } from '../IExchangeRateResponse/exhange-rate.interface';
 import { FormBuilder } from '@angular/forms';
@@ -9,7 +9,7 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./exchanger.component.scss']
 })
 
-export class ExchangerComponent implements OnDestroy {
+export class ExchangerComponent{
   currencies = [
     { code: 'EUR', name: 'Euro' },
     { code: 'USD', name: 'United States Dollar' },
@@ -86,8 +86,4 @@ export class ExchangerComponent implements OnDestroy {
     this.currency2 = temp;
     this.getExchangeRate();
   }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
 }

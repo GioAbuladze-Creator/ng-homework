@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ConfPassValidator } from '../shared/confirm-password.validator';
 import { User } from '../shared/user.interface';
 import { UsersService } from '../shared/users.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit{
+export class FormComponent implements OnInit,OnDestroy{
   constructor(
     private formBuilder: FormBuilder,
     private usersService:UsersService
@@ -89,9 +90,15 @@ export class FormComponent implements OnInit{
     this.agreementCheckbox?.setValue(true);
     this.agreementCheckbox?.disable();
   }
+  fillFormSubs!:Subscription;
+  notifyDeleteSubs!:Subscription;
   ngOnInit(): void {
-    this.usersService.fillFormEvent.subscribe((user:User)=>this.fillTheField(user))
-    this.usersService.notifyDelete.subscribe(()=>this.deleteUser())
+    this.fillFormSubs=this.usersService.fillFormEvent.subscribe((user:User)=>this.fillTheField(user))
+    this.notifyDeleteSubs=this.usersService.notifyDelete.subscribe(()=>this.deleteUser())
+  }
+  ngOnDestroy(): void {
+    this.fillFormSubs.unsubscribe()
+    this.notifyDeleteSubs.unsubscribe()
   }
   public deleteUser():void{
     this.status={header:'Registration',button:'Register'}

@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { isUserLoggedInGuard } from './services/isLoggedIn.guard';
 import { isUserLoggedOutGuard } from './services/isLoggedOut.guard';
 import { ErrorComponent } from './error.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 const appRoutes: Routes = [
   {
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     UsersComponent,
     HwFormsComponent,
     ExchangerComponent,
-    LoginComponent
+    LoginComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,

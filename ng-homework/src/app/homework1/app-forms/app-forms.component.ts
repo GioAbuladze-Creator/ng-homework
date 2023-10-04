@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 
 
@@ -10,7 +10,7 @@ declare var window:any;
   styleUrls: ['./app-forms.component.scss']
 })
 
-export class HwFormsComponent implements OnInit{
+export class HwFormsComponent implements OnInit,OnDestroy{
   constructor(private usersService:UsersService){}
 
   formModal:any;
@@ -20,6 +20,9 @@ export class HwFormsComponent implements OnInit{
     )
     this.usersService.openEdit.subscribe(()=>this.openModal())
     this.usersService.closeEdit.subscribe(()=>this.closeModal())
+  }
+  ngOnDestroy(): void {
+    this.formModal=''
   }
   openModal(){
     this.formModal.show()
