@@ -19,6 +19,7 @@ export class AuthService {
   logOut(){
     this.loggedIn=false
     delete this.loggedUser.authorized;
+    delete this.loggedUser.deleteMode;
     this.updateLoggedInfo.emit(false);
   }
   isAuthenticated(){

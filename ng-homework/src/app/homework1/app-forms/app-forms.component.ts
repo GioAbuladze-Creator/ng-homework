@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 
 
-declare var window:any;
+declare var window: any;
 
 @Component({
   selector: 'app-forms',
@@ -10,24 +10,28 @@ declare var window:any;
   styleUrls: ['./app-forms.component.scss']
 })
 
-export class HwFormsComponent implements OnInit,OnDestroy{
-  constructor(private usersService:UsersService){}
+export class HwFormsComponent implements OnInit, OnDestroy {
+  constructor(private usersService: UsersService) { }
 
-  formModal:any;
+  formModal: any;
   ngOnInit(): void {
-    this.formModal=new window.bootstrap.Modal(
-      document.getElementById('exampleModal')
+    console.log('OnInit')
+    this.formModal = new window.bootstrap.Modal(
+      document.getElementById('editModel')
     )
-    this.usersService.openEdit.subscribe(()=>this.openModal())
-    this.usersService.closeEdit.subscribe(()=>this.closeModal())
+    this.usersService.openEdit.subscribe(() => this.openModal())
+    this.usersService.closeEdit.subscribe(() => this.closeModal())
   }
-  ngOnDestroy(): void {
-    this.formModal=''
-  }
-  openModal(){
+  openModal() {
     this.formModal.show()
   }
-  closeModal(){
+  closeModal() {
     this.formModal.hide()
   }
+  ngOnDestroy(): void {
+    console.log('onDestroy')
+    this.formModal.dispose()
+
+  }
 }
+

@@ -19,13 +19,13 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 const appRoutes: Routes = [
   {
     path: 'login',
-    canActivate:[isUserLoggedOutGuard],
+    canActivate: [isUserLoggedOutGuard],
     component: LoginComponent
   },
-  {path:'users',component:HwFormsComponent,canActivate:[isUserLoggedInGuard]},
-  {path:'currency',component:ExchangerComponent,canActivate:[isUserLoggedInGuard]},
-  {path:'',redirectTo:'/login',pathMatch: 'full'},
-  {path:'**', component:ErrorComponent}
+  { path: 'users', canActivate: [isUserLoggedInGuard], component: HwFormsComponent },
+  { path: 'currency', canActivate: [isUserLoggedInGuard], component: ExchangerComponent },
+  { path: '', redirectTo:'/login', pathMatch: 'full' },
+  { path: '**', component: ErrorComponent }
 ]
 
 @NgModule({
