@@ -20,7 +20,7 @@
                 <td>{{user.nickname}}</td>
                 <td>{{user.phone}}</td>
                 <td>{{user.website}}</td>
-                <td>
+                <td *ngIf="user.authorized">
                     <button class="btn btn-info" (click)="fillForm(user)">Edit</button>
                     <button class="btn btn-danger" (click)="user.deleteMode=true">Delete</button>
                 </td>

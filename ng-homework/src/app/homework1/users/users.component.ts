@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
+import { User } from '../shared/user.interface';
 
 @Component({
   selector: 'app-users',
@@ -7,18 +8,18 @@ import { UsersService } from '../shared/users.service';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit{
-  users: Array<any> = [];
+  users: Array<User> = [];
   constructor( private usersService:UsersService) { }
 
-  public fillForm(user: any): void {
+  public fillForm(user: User): void {
     this.usersService.fillFormEvent.emit(user);
     this.usersService.openEdit.emit();
   }
 
-  public deleteMode(user: any): void {
+  public deleteMode(user: User): void {
     delete user.deleteMode;
   }
-  public deleteUser(user: any): void {
+  public deleteUser(user: User): void {
     this.usersService.deleteUser(user);
   }
   ngOnInit(): void {

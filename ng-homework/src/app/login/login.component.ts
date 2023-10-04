@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit{
     if(found){
       this.invalidLogin=false;
       this.logged=true;
+      found.authorized=true;
       this.user=found;
       console.log(found)
       this.form.reset();

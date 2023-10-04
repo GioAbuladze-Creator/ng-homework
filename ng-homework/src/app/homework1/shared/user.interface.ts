@@ -4,4 +4,6 @@ export interface User {
     nickname:string,
     phone:string,
     website:string,
+    deleteMode?:boolean,
+    authorized?:boolean
 }
