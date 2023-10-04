@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from '../homework1/shared/users.service';
 import { User } from '../homework1/shared/user.interface';
+import { Router } from '@angular/router';
 
 declare var window:any;
 
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit{
   invalidLogin:boolean=false;
   constructor(
     private fb:FormBuilder,
-    private usersService:UsersService
+    private usersService:UsersService,
+    private router:Router
   ){}
 
   form=this.fb.group({
@@ -50,9 +52,13 @@ export class LoginComponent implements OnInit{
       this.logged=true;
       this.user=found;
       console.log(found)
-      
+      this.form.reset();
+      this.router.navigate(['/users'])
     }else{
-      this.invalidLogin=true;
+      this.form.markAllAsTouched();
+      if(this.email?.value&&this.password?.value){
+        this.invalidLogin=true;
+      }
     }
   }
 }

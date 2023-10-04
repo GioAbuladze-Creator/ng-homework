@@ -67,8 +67,11 @@ export class FormComponent implements OnInit{
         this.user['phone']=this.phone?.value!
         this.user['website']=this.website?.value!
         this.form.reset()
-        this.agreementCheckbox?.enable();
-        this.status={header:'Registration',button:'Register'}
+        this.usersService.closeEdit.emit();
+        setTimeout(()=>{
+          this.agreementCheckbox?.enable();
+          this.status={header:'Registration',button:'Register'}
+        },300)
       }
     }
   }

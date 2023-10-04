@@ -16,13 +16,9 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // children: [
-    //   {
-
-    //   }
-    // ]
   },
   {path:'',redirectTo:'/login',pathMatch: 'full'},
+  {path:'users',component:HwFormsComponent},
 ]
 
 @NgModule({

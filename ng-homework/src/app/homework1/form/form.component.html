@@ -61,7 +61,7 @@
         <div class="form-group">
             <div>
                 <label>Website:</label>
-                <input type="text" class="form-control" placeholder="website" formControlName="website"
+                <input type="text" class="form-control" formControlName="website"
                     [class.is-invalid]="website?.invalid&&website?.touched">
             </div>
             <div *ngIf="website?.invalid && website?.touched" class="text-danger">

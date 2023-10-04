@@ -13,6 +13,8 @@ export class UsersService {
   }
   public notifyDelete=new EventEmitter<void>();
   public fillFormEvent=new EventEmitter<User>();
+  public openEdit=new EventEmitter<void>();
+  public closeEdit=new EventEmitter<void>();
   public deleteUser(user: User): void {
     this.userList.splice(this.userList.indexOf(user), 1);
     this.notifyDelete.emit();

@@ -11,7 +11,8 @@ export class UsersComponent implements OnInit{
   constructor( private usersService:UsersService) { }
 
   public fillForm(user: any): void {
-    this.usersService.fillFormEvent.emit(user)
+    this.usersService.fillFormEvent.emit(user);
+    this.usersService.openEdit.emit();
   }
 
   public deleteMode(user: any): void {
