@@ -89,6 +89,7 @@ export class FormComponent implements OnInit,OnDestroy{
     })
     this.agreementCheckbox?.setValue(true);
     this.agreementCheckbox?.disable();
+    this.usersService.openEdit.emit();
   }
   fillFormSubs!:Subscription;
   notifyDeleteSubs!:Subscription;

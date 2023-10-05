@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
+import { Subscription } from 'rxjs';
 
 
 declare var window: any;
@@ -12,15 +13,16 @@ declare var window: any;
 
 export class HwFormsComponent implements OnInit, OnDestroy {
   constructor(private usersService: UsersService) { }
-
+  oESubscription!: Subscription;
+  cESubscription!: Subscription;
   formModal: any;
   ngOnInit(): void {
     console.log('OnInit')
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('editModel')
     )
-    this.usersService.openEdit.subscribe(() => this.openModal())
-    this.usersService.closeEdit.subscribe(() => this.closeModal())
+    this.oESubscription=this.usersService.openEdit.subscribe(() => this.openModal())
+    this.cESubscription=this.usersService.closeEdit.subscribe(() => this.closeModal())
   }
   openModal() {
     this.formModal.show()
@@ -30,8 +32,8 @@ export class HwFormsComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     console.log('onDestroy')
-    this.formModal.dispose()
-
+    this.oESubscription.unsubscribe()
+    this.cESubscription.unsubscribe()
   }
 }
 
