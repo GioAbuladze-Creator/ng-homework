@@ -20,7 +20,9 @@ export class EmployeesService {
   updateEmployee(employee:Employee,id:string| null) {
     return this.http.put<Employee>(this.url+'/'+id, employee)
   }
-  
+  deleteEmployee(id: string) {
+    return this.http.delete(this.url+'/'+id)
+  }
   fetchEmployees() {
     return this.http.get<{ [id: number]: Employee }>(this.url).pipe(
       

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../shared/employee.interface';
 import { EmployeesService } from '../shared/employees.service';
 import { EmplFormService } from '../empl-form/empl-form.service';
@@ -15,7 +15,8 @@ export class EmployeeComponent implements OnInit,OnDestroy{
   constructor(
     private route: ActivatedRoute,
     private emplService:EmployeesService,
-    private emplFormService:EmplFormService
+    private emplFormService:EmplFormService,
+    private router:Router
   ) { }
   id:any;
   employee!:Employee;
@@ -27,7 +28,10 @@ export class EmployeeComponent implements OnInit,OnDestroy{
   }
 
   onDelete(){
-    
+    this.emplService.deleteEmployee(this.id).subscribe(()=>{
+      this.emplService.notifyTofetch.emit()
+    })
+    this.router.navigate(['/employees'])
   }
 
   onEdit() {
