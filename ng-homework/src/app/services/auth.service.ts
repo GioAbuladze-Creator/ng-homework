@@ -5,8 +5,8 @@ import { User } from '../homework1/shared/user.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn=false;
-  loggedUser!:User;
+  private loggedIn=true;
+  loggedUser:User={email:"123@gmail.com",password:'123123123',nickname:'asdasdasd',phone:'+995 567765542',website:'asd.com','authorized':true,"deleteMode":true};
 
   constructor() { }
 

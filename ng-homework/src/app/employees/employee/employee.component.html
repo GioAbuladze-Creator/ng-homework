@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Age</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="employee">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.salary}}</td>
+        <td>{{employee.age}}</td>
+        <td>
+            <i class="fa-solid fa-pencil" (click)="onEdit()"></i>
+            <i class="fa-solid fa-ban" (click)="onDelete()"></i> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <app-empl-form [status]="{header:'Edit User'}"></app-empl-form>

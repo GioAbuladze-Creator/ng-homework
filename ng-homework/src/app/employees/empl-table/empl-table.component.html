@@ -1,0 +1,23 @@
+<div class="table-responsive">
+    <table class="table table-dark overflow-scroll" >
+        <thead>
+            <tr class="text-center">
+                <th colspan="4" class="text-info">Employees</th>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="employees.length">
+            <tr *ngFor="let employee of employees" (click)="onNavigate(employee.id)">
+                <td>{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.age}}</td>
+                <td>{{employee.salary}}</td>
+            </tr>        
+        </tbody>
+    </table>
+</div>

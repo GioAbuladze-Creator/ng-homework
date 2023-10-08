@@ -1,0 +1,47 @@
+<div class="modal modal-sm fade" id="employeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeModal"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2 class="modal-header">{{status.header}}</h2>
+                <div class="container-fluid" [formGroup]="form">
+                    <form>
+                        <div class="form-group">
+                            <div>
+                                <label>Name:</label>
+                                <input type="text" class="form-control" formControlName="name"
+                                    [class.is-invalid]="name?.invalid&&name?.touched">
+                            </div>
+                            <div *ngIf="name?.invalid &&(name?.touched)" class="text-danger">
+                                <div *ngIf="name?.errors?.['required']">Name is required</div>
+                                <div *ngIf="name?.errors?.['pattern']">Use only alphabetic characters</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label>Salary:</label>
+                                <input type="number" class="form-control" formControlName="salary"
+                                    [class.is-invalid]="salary?.invalid&&salary?.touched">
+                            </div>
+                            <div *ngIf="salary?.invalid && salary?.touched" class="text-danger">
+                                <div *ngIf="salary?.errors?.['required']">Salary is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <label>Age:</label>
+                                <input type="number" class="form-control" formControlName="age"
+                                    [class.is-invalid]="age?.invalid&&age?.touched">
+                            </div>
+                            <div *ngIf="age?.invalid && age?.touched" class="text-danger">
+                                <div *ngIf="age?.errors?.['required']">Age is required</div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" (click)="onSubmit()" [disabled]="isDisabled()">Done</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

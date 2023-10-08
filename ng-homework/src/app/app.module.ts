@@ -15,6 +15,10 @@ import { isUserLoggedInGuard } from './services/isLoggedIn.guard';
 import { isUserLoggedOutGuard } from './services/isLoggedOut.guard';
 import { ErrorComponent } from './error.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmplFormComponent } from './employees/empl-form/empl-form.component';
+import { EmplTableComponent } from './employees/empl-table/empl-table.component';
+import { EmployeeComponent } from './employees/employee/employee.component';
 
 const appRoutes: Routes = [
   {
@@ -24,7 +28,9 @@ const appRoutes: Routes = [
   },
   { path: 'users', canActivate: [isUserLoggedInGuard], component: HwFormsComponent },
   { path: 'currency', canActivate: [isUserLoggedInGuard], component: ExchangerComponent },
-  { path: '', redirectTo:'/login', pathMatch: 'full' },
+  { path: 'employees', canActivate: [isUserLoggedInGuard], component: EmployeesComponent },
+  { path: 'employees/:id', canActivate: [isUserLoggedInGuard], component: EmployeeComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '**', component: ErrorComponent }
 ]
 
@@ -36,7 +42,11 @@ const appRoutes: Routes = [
     HwFormsComponent,
     ExchangerComponent,
     LoginComponent,
-    TopBarComponent
+    TopBarComponent,
+    EmployeesComponent,
+    EmplFormComponent,
+    EmplTableComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,

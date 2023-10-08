@@ -5,7 +5,7 @@ import { User } from './user.interface';
   providedIn: 'root'
 })
 export class UsersService {
-  userList: User[] = []
+  userList: User[] = [{email:"123@gmail.com",password:'123123123',nickname:'asdasdasd',phone:'+995 567765542',website:'asd.com','authorized':true,"deleteMode":false}]
   constructor() { }
 
   public addUser(user: User): void {

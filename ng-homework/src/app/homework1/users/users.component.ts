@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit{
-  users: Array<User> = [];
+  users: Array<User> = [ {email:"123@gmail.com",password:'123123123',nickname:'asdasdasd',phone:'+995 567765542',website:'asd.com','authorized':true,"deleteMode":true}
+];
   constructor( 
     private usersService:UsersService, 
     private auth:AuthService,

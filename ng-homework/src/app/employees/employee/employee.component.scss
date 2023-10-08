@@ -1,0 +1,16 @@
+table{
+    width: 700px;
+    margin:100px auto;
+    th{
+        background-color: black;
+        color:white;
+    }
+    i{  
+        &:first-child{
+            color:seagreen;
+            margin:0 10px;
+        }
+        color:red;
+        cursor: pointer;
+    }
+}
