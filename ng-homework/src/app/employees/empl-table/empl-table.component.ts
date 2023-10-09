@@ -11,14 +11,20 @@ import { Router } from '@angular/router';
 export class EmplTableComponent implements OnInit {
 
   employees: Employee[] = []
-
+  choppedEmployees:Employee[]=[]
+  pages:number[]=[]
+  limit:number=10
   constructor(
     private emplService: EmployeesService,
     private router: Router
   ) { }
   onFetchEmployees() {
     this.emplService.fetchEmployees()
-      .subscribe((employeeList) => this.employees = employeeList)
+      .subscribe((employeeList) => {
+        this.employees = employeeList
+        this.pages=Array(Math.ceil(this.employees.length/this.limit)).fill(0).map((x,i)=>i+1)
+        this.choppedEmployees=this.employees.slice(0,this.limit)
+      })
   }
   onNavigate(id: number | undefined) {
     if (id !== undefined) {
@@ -28,6 +34,9 @@ export class EmplTableComponent implements OnInit {
     } else {
       console.error('Invalid ID')
     }
+  }
+  onChange(event:any){
+    this.choppedEmployees=this.employees.slice((event.target.value-1)*this.limit,event.target.value*this.limit)
   }
   openModal(){}
   ngOnInit(): void {
