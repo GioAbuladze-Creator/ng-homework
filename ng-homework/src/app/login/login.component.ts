@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { UsersService } from '../homework1/shared/users.service';
-import { User } from '../homework1/shared/user.interface';
+import { UsersService } from '../users/shared/users.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
@@ -14,7 +13,6 @@ declare var window:any;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit{
-  // user!:User;
   invalidLogin:boolean=false;
   constructor(
     private fb:FormBuilder,

@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { User } from '../homework1/shared/user.interface';
+import { User } from '../users/shared/user.interface';
 
 @Injectable({
   providedIn: 'root'

@@ -38,10 +38,12 @@ export class EmplTableComponent implements OnInit {
   onChange(event:any){
     this.choppedEmployees=this.employees.slice((event.target.value-1)*this.limit,event.target.value*this.limit)
   }
-  openModal(){}
   ngOnInit(): void {
     this.onFetchEmployees()
     this.emplService.notifyTofetch
-      .subscribe(() => this.onFetchEmployees())
+      .subscribe(() => {
+        this.onFetchEmployees()
+      })
+    
   }
 }
