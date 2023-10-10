@@ -17,7 +17,6 @@ export class HwFormsComponent implements OnInit, OnDestroy {
   cESubscription!: Subscription;
   formModal: any;
   ngOnInit(): void {
-    console.log('OnInit')
     this.formModal = new window.bootstrap.Modal(
       document.getElementById('editModel')
     )
@@ -31,7 +30,6 @@ export class HwFormsComponent implements OnInit, OnDestroy {
     this.formModal.hide()
   }
   ngOnDestroy(): void {
-    console.log('onDestroy')
     this.oESubscription.unsubscribe()
     this.cESubscription.unsubscribe()
   }

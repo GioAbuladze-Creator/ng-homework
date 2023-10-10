@@ -29,7 +29,7 @@ export class EmplTableComponent implements OnInit {
   onNavigate(id: number | undefined) {
     if (id !== undefined) {
       this.router.navigate(
-        ['/employees/',id]
+        ['/employees',id]
       )
     } else {
       console.error('Invalid ID')

@@ -1,47 +1,47 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
-declare var window:any;
+import { Subscription } from 'rxjs';
+import { AuthService } from '../../../shared/services/auth.service';
+
+declare var window: any;
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss']
 })
-export class TopBarComponent implements OnInit,OnDestroy{
-  loggedInfo!:Subscription;
-  formModal:any;
+export class TopBarComponent implements OnInit, OnDestroy {
+  loggedInfo!: Subscription;
+  formModal: any;
   constructor(
     private auth: AuthService,
     private router: Router
   ) { }
-  loggedIn=false;
-  logOut(){
+  loggedIn = false;
+  logOut() {
     this.closeModal()
-    
     this.auth.logOut()
     this.router.navigate(['/login'])
   }
   ngOnInit(): void {
-    this.loggedIn=this.auth.isAuthenticated();
+    this.loggedIn = this.auth.isAuthenticated();
     this.loggedInfo = this.auth.updateLoggedInfo.subscribe({
-      next:(status:boolean)=>this.loggedIn=status
+      next: (status: boolean) => this.loggedIn = status
     });
-    this.formModal=new window.bootstrap.Modal(
+    this.formModal = new window.bootstrap.Modal(
       document.getElementById('logoutModal')
     )
   }
-  openModal(){
+  openModal() {
     this.formModal.show()
   }
-  closeModal(){
+  closeModal() {
     this.formModal.hide()
   }
   ngOnDestroy(): void {
-    this.formModal=''
+    this.formModal = ''
   }
-  
+
 
 }
