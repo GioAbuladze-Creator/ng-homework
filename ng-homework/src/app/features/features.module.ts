@@ -1,7 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ErrorComponent } from './error/error.component';
@@ -16,11 +13,7 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
-
   imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
     LoginModule,
     RouterModule.forChild(appRoutes),
   ],
