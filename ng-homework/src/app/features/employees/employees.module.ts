@@ -30,6 +30,9 @@ import { EmployeesComponent } from "./employees.component";
             },
             { path: ':id', component: EmployeeComponent }
         ])],
+        exports:[
+            RouterModule
+        ]
 
 })
 

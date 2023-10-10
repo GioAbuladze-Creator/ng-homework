@@ -14,7 +14,7 @@ import { FeaturesModule } from '../features/features.module';
   imports: [
     CommonModule,
     FeaturesModule,
-    RouterModule.forChild([]),
+    RouterModule,
   ],
   exports:[
     TopBarComponent,

@@ -24,6 +24,9 @@ const appRoutes: Routes = [
     LoginModule,
     RouterModule.forChild(appRoutes),
   ],
+  exports:[
+    RouterModule
+  ]
 
 })
 export class FeaturesModule { }
