@@ -28,12 +28,8 @@ import { EmployeesComponent } from "./employees.component";
                 canActivate: [isUserLoggedInGuard],
                 component: EmployeesComponent,
             },
-            { path: ':id', component: EmployeeComponent }
+            { path: ':id', canActivate:[isUserLoggedInGuard], component: EmployeeComponent }
         ])],
-        exports:[
-            RouterModule
-        ]
-
 })
 
 export class EmployeesModule {

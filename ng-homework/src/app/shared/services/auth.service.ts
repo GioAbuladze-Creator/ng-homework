@@ -6,8 +6,8 @@ import { User } from 'src/app/features/users/shared/user.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn=true;
-  loggedUser:User={email:"123@gmail.com",password:'123123123',nickname:'asdasdasd',phone:'+995 567765542',website:'asd.com','authorized':true,"deleteMode":true};
+  private loggedIn=false;
+  loggedUser!:User;
 
   constructor() { }
 

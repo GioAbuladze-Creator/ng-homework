@@ -11,7 +11,7 @@ declare var window: any;
   styleUrls: ['./app-forms.component.scss']
 })
 
-export class HwFormsComponent implements OnInit, OnDestroy {
+export class FormsComponent implements OnInit, OnDestroy {
   constructor(private usersService: UsersService) { }
   oESubscription!: Subscription;
   cESubscription!: Subscription;
