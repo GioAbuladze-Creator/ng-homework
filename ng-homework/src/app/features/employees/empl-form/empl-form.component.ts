@@ -1,17 +1,24 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+import { Subscription } from 'rxjs';
 import { EmployeesService } from '../shared/employees.service';
 import { Employee } from '../shared/employee.interface';
 import { EmplFormService } from './empl-form.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 
 declare var window: any;
 
 @Component({
   selector: 'app-empl-form',
   templateUrl: './empl-form.component.html',
-  styleUrls: ['./empl-form.component.scss']
+  styleUrls: ['./empl-form.component.scss'],
+  standalone:true,
+  imports:[
+    ReactiveFormsModule,
+    CommonModule
+  ]
 })
 export class EmplFormComponent implements OnInit, OnDestroy {
   @Input() status = { header: 'Add User' }

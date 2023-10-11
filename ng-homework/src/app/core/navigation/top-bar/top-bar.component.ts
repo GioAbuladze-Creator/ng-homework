@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../shared/services/auth.service';
@@ -9,7 +9,11 @@ declare var window: any;
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
-  styleUrls: ['./top-bar.component.scss']
+  styleUrls: ['./top-bar.component.scss'],
+  standalone:true,
+  imports:[
+    RouterModule,
+  ]
 })
 export class TopBarComponent implements OnInit, OnDestroy {
   loggedInfo!: Subscription;

@@ -1,6 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 import { Subscription } from 'rxjs';
+import { UsersComponent } from '../users/users.component';
+import { FormComponent } from '../form/form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 declare var window: any;
@@ -8,7 +11,13 @@ declare var window: any;
 @Component({
   selector: 'app-forms',
   templateUrl: './app-forms.component.html',
-  styleUrls: ['./app-forms.component.scss']
+  styleUrls: ['./app-forms.component.scss'],
+  standalone:true,
+  imports:[
+    UsersComponent,
+    FormComponent,
+    ReactiveFormsModule,
+  ]
 })
 
 export class FormsComponent implements OnInit, OnDestroy {

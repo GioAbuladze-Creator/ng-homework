@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { Employee } from '../shared/employee.interface';
 import { EmployeesService } from '../shared/employees.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-empl-table',
   templateUrl: './empl-table.component.html',
-  styleUrls: ['./empl-table.component.scss']
+  styleUrls: ['./empl-table.component.scss'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    ReactiveFormsModule
+  ]
 })
 export class EmplTableComponent implements OnInit {
 

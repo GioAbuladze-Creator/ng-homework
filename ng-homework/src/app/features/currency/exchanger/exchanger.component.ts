@@ -1,15 +1,22 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+
 import { IExchangeRateResponse } from '../IExchangeRateResponse/exhange-rate.interface';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'exchanger',
   templateUrl: './exchanger.component.html',
-  styleUrls: ['./exchanger.component.scss']
+  styleUrls: ['./exchanger.component.scss'],
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+  ]
 })
 
-export class ExchangerComponent{
+export class ExchangerComponent {
   currencies = [
     { code: 'EUR', name: 'Euro' },
     { code: 'USD', name: 'United States Dollar' },

@@ -1,14 +1,22 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 import { ConfPassValidator } from '../shared/confirm-password.validator';
 import { User } from '../shared/user.interface';
 import { UsersService } from '../shared/users.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  standalone:true,
+  imports:[
+    ReactiveFormsModule,
+    CommonModule
+  ]
 })
 export class FormComponent implements OnInit,OnDestroy{
   constructor(
