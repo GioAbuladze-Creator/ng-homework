@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,7 +18,8 @@ declare var window: any;
     CommonModule,
     ReactiveFormsModule,
     FormComponent
-  ]
+  ],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
   invalidLogin: boolean = false;

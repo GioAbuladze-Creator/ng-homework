@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { UsersService } from '../shared/users.service';
 import { Subscription } from 'rxjs';
 import { UsersComponent } from '../users/users.component';
@@ -17,7 +17,8 @@ declare var window: any;
     UsersComponent,
     FormComponent,
     ReactiveFormsModule,
-  ]
+  ],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 
 export class FormsComponent implements OnInit, OnDestroy {
