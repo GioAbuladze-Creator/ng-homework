@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { Employee } from '../shared/employee.interface';
 import { EmployeesService } from '../shared/employees.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-empl-table',
@@ -13,7 +13,7 @@ import { EmployeesService } from '../shared/employees.service';
   standalone:true,
   imports:[
     CommonModule,
-    ReactiveFormsModule
+    FormsModule
   ]
 })
 export class EmplTableComponent implements OnInit {
@@ -22,6 +22,7 @@ export class EmplTableComponent implements OnInit {
   choppedEmployees:Employee[]=[]
   pages:number[]=[]
   limit:number=10
+  pageNum=1;
   constructor(
     private emplService: EmployeesService,
     private router: Router
@@ -50,7 +51,8 @@ export class EmplTableComponent implements OnInit {
     this.onFetchEmployees()
     this.emplService.notifyTofetch
       .subscribe(() => {
-        this.onFetchEmployees()
+        this.onFetchEmployees();
+        this.pageNum=1;
       })
     
   }

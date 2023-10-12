@@ -22,7 +22,7 @@
     </table>
     <div>
         <label for="">page</label>
-        <select class="form-select" aria-label="Default select example" (change)="onChange($event)">
+        <select class="form-select" aria-label="Default select example" (change)="onChange($event)" [(ngModel)]="pageNum">
             <option *ngFor="let page of pages" [value]="page">{{page}}</option>
         </select>
     </div>

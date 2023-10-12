@@ -10,4 +10,4 @@ bootstrapApplication(AppComponent,{
     provideHttpClient(),
     provideRouter(APP_ROUTES)
   ]
-})
+}).catch((error)=>console.error(error))
